@@ -9,6 +9,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ReplyController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('JWT', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +37,7 @@ class ReplyController extends Controller
     {
         $question->replies()->create($request->all());
         return response("Reply succesfully created", Response::HTTP_CREATED);
-    }
+    } //946 180
 
     /**
      * Display the specified resource.
