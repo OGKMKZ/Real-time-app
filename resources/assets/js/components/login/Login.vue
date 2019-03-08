@@ -9,7 +9,9 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" v-model="form.password">
       </div>
-      <button class="btn btn-success btn-block">Submit</button>
+      <button class="btn btn-success">Log in</button>
+
+      <router-link to="/signup" tag="a" class="btn btn-info">Sign up</router-link>
     </form>
   </div>
 </template>

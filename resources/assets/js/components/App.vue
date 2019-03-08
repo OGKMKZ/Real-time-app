@@ -3,7 +3,13 @@
     <app-navbar></app-navbar>
     <div class="container">
       <div class="row">
-        <router-view></router-view>
+        <transition
+          enter-active-class="animated fadeInLeft"
+          leave-active-class="animated fadeOutRight"
+          mode="out-in"
+        >
+          <router-view></router-view>
+        </transition>
       </div>
     </div>
     <app-footer></app-footer>

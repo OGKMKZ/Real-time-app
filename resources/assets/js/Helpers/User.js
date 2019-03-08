@@ -2,6 +2,8 @@ import Token from './Token';
 import Storage from './Storage';
 
 class User {
+  signup(data) {}
+
   login(data) {
     axios
       .post('api/auth/login', data)
@@ -14,6 +16,8 @@ class User {
     const username = res.data.user;
     if (Token.isValid(access_token)) {
       Storage.store(access_token, username);
+    } else {
+      console.log('erreur');
     }
   }
 
