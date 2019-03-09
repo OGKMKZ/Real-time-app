@@ -3,7 +3,7 @@
     <form method="post" @submit.prevent="signup()">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="name" class="form-control" v-model="form.name">
+        <input type="text" class="form-control" v-model="form.name">
         <span class="text-danger" v-if="errors.name">{{errors.name[0]}}</span>
       </div>
 
@@ -49,8 +49,10 @@ export default {
         .post("api/auth/signup", this.form)
         .then(response => User.handleResponse(response))
         .catch(error => {
-          this.errors = error.response.data.errors;
-        }); //(this.errors =)error.response.data.errors));
+          if (error.response) {
+            this.errors = error.response.data.errors;
+          }
+        });
     },
     alert() {
       alert(this.errors);

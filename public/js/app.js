@@ -1973,8 +1973,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("api/auth/signup", this.form).then(function (response) {
         return User.handleResponse(response);
       }).catch(function (error) {
-        _this.errors = error.response.data.errors;
-      }); //(this.errors =)error.response.data.errors));
+        if (error.response) {
+          _this.errors = error.response.data.errors;
+        }
+      });
     },
     alert: function (_alert) {
       function alert() {
@@ -36835,7 +36837,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
-            attrs: { type: "name" },
+            attrs: { type: "text" },
             domProps: { value: _vm.form.name },
             on: {
               input: function($event) {
@@ -51781,7 +51783,7 @@ function () {
       var payload = this.payload(token);
 
       if (payload) {
-        return payload.iss == 'http://localhost:8000/api/auth/login' ? true : false;
+        return payload.iss == 'http://localhost:8000/api/auth/login' || 'http://localhost:8000/api/auth/signup' ? true : false;
       }
 
       return false;
